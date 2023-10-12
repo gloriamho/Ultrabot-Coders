@@ -1,0 +1,32 @@
+// Create a heightmap array to store elevation data.
+float[,] heightmapData = new float[heightmapResolution, heightmapResolution];
+
+// Iterate through the rows of data.
+for (int i = 0; i < rowCount; i++)
+{
+    // Parse latitude, longitude, height, and slope values.
+    float latitude = float.Parse(latitudeLines[i]);
+    float longitude = float.Parse(longitudeLines[i]);
+    float height = float.Parse(heightLines[i]);
+    float slope = float.Parse(slopeLines[i]);
+
+    // Convert latitude and longitude to Unity coordinates.
+    float unityX = Mathf.Lerp(unityMinX, unityMaxX, (longitude - minLongitude) / (maxLongitude - minLongitude));
+    float unityY = Mathf.Lerp(unityMinY, unityMaxY, (latitude - minLatitude) / (maxLatitude - minLatitude));
+
+    // Calculate normalized terrain coordinates.
+    float normalizedX = (unityX - unityMinX) / (unityMaxX - unityMinX);
+    float normalizedY = (unityY - unityMinY) / (unityMaxY - unityMinY);
+
+    // Calculate heightmap position.
+    int xIndex = Mathf.FloorToInt(normalizedX * (heightmapResolution - 1));
+    int yIndex = Mathf.FloorToInt(normalizedY * (heightmapResolution - 1));
+
+    // Set height and slope values in the heightmap.
+    heightmapData[xIndex, yIndex] = height;
+    // You can also use the slope value to adjust terrain properties here.
+}
+
+// Apply the modified heightmap data to the terrain.
+terrainData.SetHeights(0, 0, heightmapData);
+
