@@ -5,7 +5,7 @@
 # - this CSV file can be downsampled and converted to a mesh (.obj) with the CloudCompare tool
 # - once converted to a mesh, it can be imported and viewed inside Unity
 # - CloudCompare - Convert to mesh steps:
-#       1.) Open convert-raw-data-to-xyz-csv.py and "Yes to all"
+#       1.) Open haworth-xyz.csv and "Yes to all"
 #       2.) Edit > Edit global shift and scale
 #       3.) Change X, Y, and Z Shift to 0 - Then Click on Yes
 #       4.) Edit > Subsample
