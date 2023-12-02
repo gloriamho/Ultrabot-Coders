@@ -24,7 +24,7 @@ def convert_vertices_to_cartesian(longitude, latitude, height):
     radius = L_RADIUS + height
     x = radius * math.cos(math.radians(latitude)) * math.cos(math.radians(longitude))
     y = radius * math.cos(math.radians(latitude)) * math.sin(math.radians(longitude))
-    z = radius * math.sin(math.radians(latitude))
+    z = radius * math.sin(math.radians(abs(latitude)))
     return x, y, z
 
 def main():
