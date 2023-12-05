@@ -75,7 +75,7 @@ public class SC_FPSController : MonoBehaviour
 
 
         }
-        // Update textbox with coordinates
+        // Update text box with coordinates
         coordinatesUI.text = "X: " +
                 transform.position.x + "\n" + "Y: " +
                 transform.position.y + "\n" + "Z: " +
